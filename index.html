@@ -774,10 +774,16 @@
                     <li><a onclick="showPage('home')">Home</a></li>
                     <li><a onclick="showPage('home'); setTimeout(() => document.getElementById('servicos').scrollIntoView({behavior: 'smooth'}), 100)">Serviços</a></li>
                     <li><a onclick="showPage('home'); setTimeout(() => document.getElementById('contato').scrollIntoView({behavior: 'smooth'}), 100)">Contato</a></li>
+                    <li><a href="https://g.page/r/CXcZ5Yv1_tm-EAE/review" target="_blank" style="color: #ffd700; font-weight: 700;"><i class="fas fa-star"></i> Avaliações</a></li>
                 </ul>
-                <a href="https://wa.me/5553981007777?text=Olá%20BOX%20T.I!%20Gostaria%20de%20agendar%20um%20atendimento." class="cta-button">
-                    <i class="fab fa-whatsapp"></i> Agendar
-                </a>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="https://g.page/r/CXcZ5Yv1_tm-EAE/review" target="_blank" class="cta-button" style="background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); color: #333;">
+                        <i class="fas fa-star"></i> Avaliações
+                    </a>
+                    <a href="https://wa.me/5553981007777?text=Olá%20BOX%20T.I!%20Gostaria%20de%20agendar%20um%20atendimento." class="cta-button">
+                        <i class="fab fa-whatsapp"></i> Agendar
+                    </a>
+                </div>
             </nav>
         </div>
     </header>
@@ -793,6 +799,9 @@
                 <div class="hero-buttons">
                     <a href="https://wa.me/5553981007777?text=Olá%20BOX%20T.I!%20Gostaria%20de%20agendar%20um%20atendimento." class="btn-primary">
                         <i class="fab fa-whatsapp"></i> Agendar via WhatsApp
+                    </a>
+                    <a href="https://g.page/r/CXcZ5Yv1_tm-EAE/review" target="_blank" class="btn-secondary" style="background: rgba(255, 215, 0, 0.1); border-color: #ffd700; color: #ffd700;">
+                        <i class="fas fa-star"></i> Ver Avaliações
                     </a>
                     <a onclick="document.getElementById('servicos').scrollIntoView({behavior: 'smooth'})" class="btn-secondary">
                         <i class="fas fa-arrow-down"></i> Conhecer Serviços
@@ -863,6 +872,13 @@
                     <p>Diferenciais que nos tornam referência em tecnologia</p>
                 </div>
                 <div class="features-grid">
+                    <div class="feature-item" style="cursor: pointer; border-color: #ffd700;" onclick="window.open('https://g.page/r/CXcZ5Yv1_tm-EAE/review', '_blank')">
+                        <div class="feature-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Avaliações 5 Estrelas</h3>
+                        <p>Clique aqui para ver as avaliações de nossos clientes no Google</p>
+                    </div>
                     <div class="feature-item">
                         <div class="feature-icon">
                             <i class="fas fa-check-circle"></i>
@@ -929,11 +945,20 @@
                             <i class="fas fa-calendar-check"></i>
                             <span>Atendimento com hora marcada</span>
                         </div>
+                        <div class="info-item">
+                            <i class="fas fa-star" style="color: #ffd700;"></i>
+                            <span>Avaliações 5 Estrelas no Google</span>
+                        </div>
                     </div>
 
-                    <a href="https://wa.me/5553981007777?text=Olá%20BOX%20T.I!%20Gostaria%20de%20agendar%20um%20atendimento%20para%20discutir%20nossas%20necessidades%20de%20TI." class="whatsapp-link">
-                        <i class="fab fa-whatsapp"></i> Agendar Atendimento
-                    </a>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="https://wa.me/5553981007777?text=Olá%20BOX%20T.I!%20Gostaria%20de%20agendar%20um%20atendimento%20para%20discutir%20nossas%20necessidades%20de%20TI." class="whatsapp-link">
+                            <i class="fab fa-whatsapp"></i> Agendar Atendimento
+                        </a>
+                        <a href="https://g.page/r/CXcZ5Yv1_tm-EAE/review" target="_blank" class="whatsapp-link" style="background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%); color: #333;">
+                            <i class="fas fa-star"></i> Ver Avaliações
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1327,6 +1352,9 @@
             <div class="social-links">
                 <a href="https://wa.me/5553981007777" title="WhatsApp">
                     <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://g.page/r/CXcZ5Yv1_tm-EAE/review" target="_blank" title="Avaliações Google" style="color: #ffd700;">
+                    <i class="fas fa-star"></i>
                 </a>
             </div>
         </div>
