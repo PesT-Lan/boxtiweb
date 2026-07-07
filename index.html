@@ -759,6 +759,80 @@
         .pulse {
             animation: pulse 2s ease-in-out infinite;
         }
+
+        /* Downloads Styles */
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .download-card {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+
+        .download-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.1);
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .file-icon {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+
+        .file-details h3 {
+            font-size: 1rem;
+            margin: 0;
+            color: white;
+            word-break: break-all;
+        }
+
+        .file-details span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .btn-download {
+            margin-top: auto;
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent);
+            text-decoration: none;
+            padding: 0.6rem;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s;
+        }
+
+        .btn-download:hover {
+            background: var(--accent);
+            color: var(--dark-bg);
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 3rem;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
     </style>
 </head>
 <body>
@@ -773,6 +847,7 @@
                 <ul class="nav-links">
                     <li><a onclick="showPage('home')">Home</a></li>
                     <li><a onclick="showPage('home'); setTimeout(() => document.getElementById('servicos').scrollIntoView({behavior: 'smooth'}), 100)">Serviços</a></li>
+                    <li><a onclick="showPage('downloads')">Downloads</a></li>
                     <li><a onclick="showPage('home'); setTimeout(() => document.getElementById('contato').scrollIntoView({behavior: 'smooth'}), 100)">Contato</a></li>
                 </ul>
                 <a href="https://wa.me/5553981007777?text=Olá%20BOX%20T.I!%20Gostaria%20de%20agendar%20um%20atendimento." class="cta-button">
@@ -1272,31 +1347,31 @@
                 <div class="service-content">
                     <div class="service-description">
                         <h2>Nuvem Inteligente</h2>
-                        <p>A BOX T.I oferece soluções completas de nuvem, desde o planejamento da migração até o gerenciamento contínuo. Nossas soluções garantem flexibilidade, escalabilidade e redução de custos.</p>
+                        <p>A BOX T.I oferece soluções completas de nuvem, desde a migração de servidores locais até a gestão de ambientes multicloud. Garantimos escalabilidade, segurança e eficiência.</p>
                         
-                        <p>Trabalhamos com os principais provedores de nuvem (AWS, Azure, Google Cloud) para oferecer a melhor solução para seu negócio.</p>
+                        <p>Trabalhamos com os principais provedores de nuvem do mercado, ajudando sua empresa a escolher a melhor estratégia: nuvem pública, privada ou híbrida.</p>
 
                         <div class="service-benefits">
                             <h3><i class="fas fa-check-circle"></i> Benefícios</h3>
                             <div class="benefit-item">
                                 <i class="fas fa-check"></i>
-                                <p><strong>Flexibilidade:</strong> Escale recursos conforme necessário</p>
+                                <p><strong>Escalabilidade:</strong> Aumente ou diminua recursos conforme a demanda</p>
                             </div>
                             <div class="benefit-item">
                                 <i class="fas fa-check"></i>
-                                <p><strong>Redução de Custos:</strong> Pague apenas pelo que usar</p>
+                                <p><strong>Redução de CAPEX:</strong> Troque investimento em hardware por custos operacionais</p>
                             </div>
                             <div class="benefit-item">
                                 <i class="fas fa-check"></i>
-                                <p><strong>Acesso Global:</strong> Acesse seus dados de qualquer lugar</p>
+                                <p><strong>Acesso Remoto:</strong> Seus dados e aplicações acessíveis de qualquer lugar</p>
                             </div>
                             <div class="benefit-item">
                                 <i class="fas fa-check"></i>
-                                <p><strong>Segurança Garantida:</strong> Conformidade com padrões internacionais</p>
+                                <p><strong>Segurança Avançada:</strong> Proteção de dados com criptografia e backup em nuvem</p>
                             </div>
                             <div class="benefit-item">
                                 <i class="fas fa-check"></i>
-                                <p><strong>Gerenciamento Simplificado:</strong> Deixe a infraestrutura conosco</p>
+                                <p><strong>Disponibilidade:</strong> Infraestrutura global com alta resiliência</p>
                             </div>
                         </div>
                     </div>
@@ -1312,6 +1387,36 @@
                         <p>Descubra como a nuvem pode transformar sua infraestrutura. Agende uma consulta com nossos especialistas.</p>
                         <a href="https://wa.me/5553981007777?text=Olá%20BOX%20T.I!%20Gostaria%20de%20saber%20mais%20sobre%20Soluções%20em%20Nuvem." class="whatsapp-link">
                             <i class="fab fa-whatsapp"></i> Fale Conosco
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+
+    <!-- Downloads Page -->
+    <div id="downloads" class="page-section">
+        <section class="service-detail">
+            <div class="container">
+                <button class="btn-back" onclick="showPage('home')">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+
+                <div class="service-detail-header">
+                    <h1>Central de Downloads</h1>
+                    <p>Acesse programas, utilitários e documentos compartilhados pela BOX T.I</p>
+                </div>
+
+                <div id="downloads-grid" class="downloads-grid">
+                    <!-- Files will be loaded here -->
+                </div>
+
+                <section class="contact" style="margin-top: 4rem;">
+                    <div class="contact-content">
+                        <h2>Precisa de Suporte?</h2>
+                        <p>Se não encontrar o que procura ou tiver dificuldades no download, fale conosco.</p>
+                        <a href="https://wa.me/5553981007777?text=Olá%20BOX%20T.I!%20Estou%20com%20dificuldades%20na%20aba%20de%20downloads." class="whatsapp-link">
+                            <i class="fab fa-whatsapp"></i> Suporte via WhatsApp
                         </a>
                     </div>
                 </section>
@@ -1337,6 +1442,9 @@
 
     <script>
         function showPage(pageId) {
+            if (pageId === 'downloads') {
+                loadDownloads();
+            }
             // Hide all pages
             const pages = document.querySelectorAll('.page-section');
             pages.forEach(page => page.classList.remove('active'));
@@ -1382,6 +1490,68 @@
             el.style.opacity = '0';
             observer.observe(el);
         });
+
+        async function loadDownloads() {
+            const grid = document.getElementById('downloads-grid');
+            if (!grid) return;
+            
+            // Substitua esta URL após publicar o Google Apps Script
+            const SCRIPT_URL = 'SUA_URL_DO_GOOGLE_APPS_SCRIPT_AQUI';
+            
+            if (SCRIPT_URL === 'SUA_URL_DO_GOOGLE_APPS_SCRIPT_AQUI') {
+                grid.innerHTML = '<div class="loading-spinner"><i class="fas fa-exclamation-triangle"></i><br>Configuração pendente. Por favor, siga as instruções no arquivo google_apps_script.js.</div>';
+                return;
+            }
+
+            grid.innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Carregando arquivos...</div>';
+
+            try {
+                const response = await fetch(SCRIPT_URL);
+                const files = await response.json();
+                
+                if (files.length === 0) {
+                    grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1;">Nenhum arquivo disponível no momento.</p>';
+                    return;
+                }
+
+                grid.innerHTML = files.map(file => `
+                    <div class="download-card">
+                        <div class="file-info">
+                            <div class="file-icon">
+                                <i class="fas ${getFileIcon(file.type)}"></i>
+                            </div>
+                            <div class="file-details">
+                                <h3>${file.name}</h3>
+                                <span>${formatBytes(file.size)}</span>
+                            </div>
+                        </div>
+                        <a href="${file.url}" class="btn-download" target="_blank">
+                            <i class="fas fa-download"></i> Download
+                        </a>
+                    </div>
+                `).join('');
+            } catch (error) {
+                grid.innerHTML = '<p style="text-align: center; grid-column: 1/-1; color: #ff4444;">Erro ao carregar arquivos. Verifique a conexão.</p>';
+            }
+        }
+
+        function getFileIcon(mimeType) {
+            if (mimeType.includes('pdf')) return 'fa-file-pdf';
+            if (mimeType.includes('image')) return 'fa-file-image';
+            if (mimeType.includes('zip') || mimeType.includes('rar')) return 'fa-file-archive';
+            if (mimeType.includes('word') || mimeType.includes('text')) return 'fa-file-word';
+            if (mimeType.includes('excel') || mimeType.includes('spreadsheet')) return 'fa-file-excel';
+            return 'fa-file-alt';
+        }
+
+        function formatBytes(bytes, decimals = 2) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const dm = decimals < 0 ? 0 : decimals;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        }
     </script>
 </body>
 </html>
