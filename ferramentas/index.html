@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Windows Debloat Toolbox - Ferramenta centralizada para otimização do Windows 11">
+    <title>Windows Debloat Toolbox - BOX T.I</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066ff;
+            --primary-dark: #0052cc;
+            --secondary: #00d4ff;
+            --dark-bg: #0a1628;
+            --darker-bg: #050d1a;
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent: #00d4ff;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(5, 13, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo i {
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: slideUp 1s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, white 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: rgba(0, 102, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            background: rgba(0, 102, 255, 0.15);
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateY(-5px);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Scripts Grid */
+        .scripts-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .scripts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .script-card {
+            background: rgba(0, 102, 255, 0.05);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .script-card:hover {
+            background: rgba(0, 102, 255, 0.1);
+            border-color: rgba(0, 212, 255, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .script-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .script-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .script-subtitle {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .script-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .script-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        .info-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.75rem;
+            border-radius: 6px;
+        }
+
+        .info-label {
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-value {
+            color: var(--accent);
+            font-weight: 600;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .badges {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-novato {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+
+        .badge-intermediario {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+
+        .badge-avancado {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
+        .badge-reversivel {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+
+        .badge-nao-reversivel {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
+        .btn-copy {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-copy:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-copy:active {
+            transform: translateY(0);
+        }
+
+        /* How to Use */
+        .how-to-section {
+            padding: 4rem 0;
+            background: rgba(0, 102, 255, 0.05);
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-description {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(5, 13, 26, 0.95);
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                margin-top: 60px;
+                padding: 2rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .scripts-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .copy-feedback {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 6px;
+            display: none;
+            animation: slideIn 0.3s ease-out;
+            z-index: 2000;
+        }
+
+        .copy-feedback.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="/" class="logo">
+                    <i class="fas fa-tools"></i>
+                    Windows Debloat
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#scripts">Scripts</a></li>
+                    <li><a href="#como-usar">Como Usar</a></li>
+                    <li><a href="https://github.com/PesT-Lan/ferramenta-desinfestacao" target="_blank">GitHub</a></li>
+                </ul>
+                <a href="https://wa.me/5553981007777?text=Olá%20BOX%20T.I!%20Gostaria%20de%20saber%20mais%20sobre%20a%20ferramenta%20de%20debloat." class="cta-button">
+                    <i class="fab fa-whatsapp"></i> Suporte
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Windows Debloat Toolbox</h1>
+                <p>Centralize e execute os melhores scripts de otimização do Windows 11. Remova bloatware, melhore a privacidade e libere espaço em disco com segurança.</p>
+                
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-value">5</div>
+                        <div class="stat-label">Scripts disponíveis</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">Reversíveis (maioria)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">14GB</div>
+                        <div class="stat-label">Máximo liberável</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts Section -->
+    <section class="scripts-section" id="scripts">
+        <div class="container">
+            <h2 class="section-title">Ferramentas de Debloat</h2>
+            <p class="section-subtitle">Scripts para remover bloatware, desabilitar telemetria e otimizar seu Windows 11</p>
+
+            <div class="scripts-grid">
+                <!-- Chris Titus -->
+                <div class="script-card">
+                    <div class="script-icon">⚙️</div>
+                    <div class="script-name">Chris Titus Tech</div>
+                    <div class="script-subtitle">Windows Utility</div>
+                    <div class="script-description">Ferramenta completa para instalar programas, aplicar tweaks, corrigir problemas e atualizar Windows. Interface moderna com presets predefinidos.</div>
+                    
+                    <div class="script-info">
+                        <div class="info-item">
+                            <span class="info-label">RAM economizada</span>
+                            <span class="info-value">~600MB</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Espaço liberado</span>
+                            <span class="info-value">~0,6 GB</span>
+                        </div>
+                    </div>
+
+                    <div class="badges">
+                        <span class="badge badge-novato">Novato</span>
+                        <span class="badge badge-reversivel">✓ Reversível</span>
+                    </div>
+
+                    <button class="btn-copy" onclick="copyCommand('irm https://christitus.com/win | iex')">
+                        <i class="fas fa-copy"></i> Copiar Comando
+                    </button>
+                </div>
+
+                <!-- Win11Debloat -->
+                <div class="script-card">
+                    <div class="script-icon">🛡️</div>
+                    <div class="script-name">Win11Debloat</div>
+                    <div class="script-subtitle">Raphire</div>
+                    <div class="script-description">Script PowerShell leve e fácil de usar para remover apps pré-instalados, desabilitar telemetria e melhorar privacidade.</div>
+                    
+                    <div class="script-info">
+                        <div class="info-item">
+                            <span class="info-label">RAM economizada</span>
+                            <span class="info-value">~500MB</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Espaço liberado</span>
+                            <span class="info-value">~0,4 GB</span>
+                        </div>
+                    </div>
+
+                    <div class="badges">
+                        <span class="badge badge-intermediario">Intermediário</span>
+                        <span class="badge badge-reversivel">✓ Reversível</span>
+                    </div>
+
+                    <button class="btn-copy" onclick="copyCommand('iwr -useb https://raw.githubusercontent.com/Raphire/Win11Debloat/main/src/scripts/main.ps1 | iex')">
+                        <i class="fas fa-copy"></i> Copiar Comando
+                    </button>
+                </div>
+
+                <!-- Winhance -->
+                <div class="script-card">
+                    <div class="script-icon">✨</div>
+                    <div class="script-name">Winhance</div>
+                    <div class="script-subtitle">Interface Limpa</div>
+                    <div class="script-description">Aplicação C# para otimizar, customizar e melhorar Windows. Interface limpa com opções avançadas de personalização.</div>
+                    
+                    <div class="script-info">
+                        <div class="info-item">
+                            <span class="info-label">RAM economizada</span>
+                            <span class="info-value">Moderado</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Espaço liberado</span>
+                            <span class="info-value">Moderado</span>
+                        </div>
+                    </div>
+
+                    <div class="badges">
+                        <span class="badge badge-novato">Novato</span>
+                        <span class="badge badge-reversivel">✓ Reversível</span>
+                    </div>
+
+                    <button class="btn-copy" onclick="copyCommand('https://github.com/harryxiong/Winhance')">
+                        <i class="fas fa-copy"></i> Copiar Link
+                    </button>
+                </div>
+
+                <!-- Tiny11 -->
+                <div class="script-card">
+                    <div class="script-icon">🚀</div>
+                    <div class="script-name">Tiny11 Builder</div>
+                    <div class="script-subtitle">Computadores Antigos</div>
+                    <div class="script-description">Script PowerShell para criar uma imagem Windows 11 otimizada e enxuta. Ideal para PCs com pouco espaço.</div>
+                    
+                    <div class="script-info">
+                        <div class="info-item">
+                            <span class="info-label">RAM economizada</span>
+                            <span class="info-value">~500MB</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Espaço liberado</span>
+                            <span class="info-value">~14 GB</span>
+                        </div>
+                    </div>
+
+                    <div class="badges">
+                        <span class="badge badge-avancado">Avançado</span>
+                        <span class="badge badge-nao-reversivel">✗ Não reversível</span>
+                    </div>
+
+                    <button class="btn-copy" onclick="copyCommand('https://github.com/ntdevlabs/tiny11builder')">
+                        <i class="fas fa-copy"></i> Copiar Link
+                    </button>
+                </div>
+
+                <!-- Massgrave -->
+                <div class="script-card">
+                    <div class="script-icon">📊</div>
+                    <div class="script-name">Massgrave</div>
+                    <div class="script-subtitle">Ativação Office</div>
+                    <div class="script-description">Script para suporte ao Office. Ativa e gerencia licenças do Microsoft Office de forma segura e confiável.</div>
+                    
+                    <div class="script-info">
+                        <div class="info-item">
+                            <span class="info-label">Tipo</span>
+                            <span class="info-value">Office</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Reversível</span>
+                            <span class="info-value">Sim</span>
+                        </div>
+                    </div>
+
+                    <div class="badges">
+                        <span class="badge badge-intermediario">Intermediário</span>
+                        <span class="badge badge-reversivel">✓ Reversível</span>
+                    </div>
+
+                    <button class="btn-copy" onclick="copyCommand('irm https://get.activated.win | iex')">
+                        <i class="fas fa-copy"></i> Copiar Comando
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Use -->
+    <section class="how-to-section" id="como-usar">
+        <div class="container">
+            <h2 class="section-title">Como Usar</h2>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Escolha o Script</div>
+                    <div class="step-description">Selecione o script mais adequado para suas necessidades. Cada um tem um nível de dificuldade e impacto diferentes.</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Copie o Comando</div>
+                    <div class="step-description">Clique em "Copiar Comando" para copiar o comando PowerShell para sua área de transferência.</div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Execute como Admin</div>
+                    <div class="step-description">Abra PowerShell como administrador e cole o comando. Confirme os prompts conforme necessário.</div>
+                </div>
+            </div>
+
+            <div style="background: rgba(0, 0, 0, 0.3); border-left: 4px solid var(--warning); padding: 1.5rem; border-radius: 6px; margin-top: 2rem;">
+                <h3 style="color: var(--warning); margin-bottom: 0.5rem;">⚠️ Importante</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    Todos os scripts são de código aberto e verificados pela comunidade. Sempre faça backup de seus dados antes de executar scripts de sistema. Recomendamos criar um ponto de restauração do Windows antes de começar.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 BOX T.I - Windows Debloat Toolbox. Todos os scripts são de código aberto e verificados.</p>
+            <p style="margin-top: 1rem; font-size: 0.85rem;">Use por sua conta e risco. Faça backup antes de executar scripts de sistema.</p>
+        </div>
+    </footer>
+
+    <!-- Copy Feedback -->
+    <div class="copy-feedback" id="copyFeedback">
+        <i class="fas fa-check"></i> Comando copiado com sucesso!
+    </div>
+
+    <script>
+        function copyCommand(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                const feedback = document.getElementById('copyFeedback');
+                feedback.classList.add('show');
+                
+                setTimeout(() => {
+                    feedback.classList.remove('show');
+                }, 3000);
+            }).catch(err => {
+                alert('Erro ao copiar: ' + err);
+            });
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
