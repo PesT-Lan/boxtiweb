@@ -1,4 +1,4 @@
-# BOX T.I - Website Profissional
+# BOX T.I - Website 
 
 Site corporativo para BOX T.I - Expertise em Tecnologia
 
