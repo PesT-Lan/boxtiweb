@@ -35,11 +35,10 @@ Site corporativo para BOX T.I - Expertise em Tecnologia
 
 ## 📊 Performance
 
-- Carregamento rápido
-- Otimizado para SEO
-- Acessível (WCAG)
-- Compatível com todos os navegadores modernos
-
+- Atendimento rápido
+- Reunioes com CEO
+- Acessível 
+- Disponível 24/7
 ---
 
 **BOX T.I - Expertise em Tecnologia** © 2026
