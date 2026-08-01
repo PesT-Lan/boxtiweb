@@ -613,7 +613,7 @@
                     </div>
 
                     <div style="display: flex; gap: 1rem;">
-                        <button class="btn-copy" style="flex: 1;" onclick="copyCommand('iwr -useb https://raw.githubusercontent.com/Raphire/Win11Debloat/main/src/scripts/main.ps1 | iex')">
+                        <button class="btn-copy" style="flex: 1;" onclick="copyCommand('& ([scriptblock]::Create((irm \"https://debloat.raphi.re/\")))')">
                             <i class="fas fa-copy"></i> Copiar Comando
                         </button>
                         <a href="https://github.com/Raphire/Win11Debloat" target="_blank" class="btn-copy" style="flex: 1; text-decoration: none; display: flex; align-items: center; justify-content: center;">
