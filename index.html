@@ -848,6 +848,7 @@
                     <li><a onclick="showPage('home')">Home</a></li>
                     <li><a onclick="showPage('home'); setTimeout(() => document.getElementById('servicos').scrollIntoView({behavior: 'smooth'}), 100)">Serviços</a></li>
                     <li><a onclick="showPage('downloads')">Downloads</a></li>
+                    <li><a onclick="showPage('ferramentas')">Ferramentas</a></li>
                     <li><a onclick="showPage('home'); setTimeout(() => document.getElementById('contato').scrollIntoView({behavior: 'smooth'}), 100)">Contato</a></li>
                 </ul>
                 <a href="https://wa.me/5553981007777?text=Olá%20BOX%20T.I!%20Gostaria%20de%20agendar%20um%20atendimento." class="cta-button">
@@ -1417,6 +1418,61 @@
                         <p>Se não encontrar o que procura ou tiver dificuldades no download, fale conosco.</p>
                         <a href="https://wa.me/5553981007777?text=Olá%20BOX%20T.I!%20Estou%20com%20dificuldades%20na%20aba%20de%20downloads." class="whatsapp-link">
                             <i class="fab fa-whatsapp"></i> Suporte via WhatsApp
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+
+    <!-- Ferramentas Page -->
+    <div id="ferramentas" class="page-section">
+        <section class="service-detail">
+            <div class="container">
+                <button class="btn-back" onclick="showPage('home')">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+
+                <div class="service-detail-header">
+                    <h1>Ferramentas de Otimização</h1>
+                    <p>Acesse nossas ferramentas exclusivas para otimizar e manter seu Windows 11 em perfeito funcionamento</p>
+                </div>
+
+                <div class="ferramentas-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 3rem 0;">
+                    <!-- Windows Debloat Toolbox -->
+                    <div class="ferramenta-card" style="background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 212, 255, 0.05) 100%); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 12px; padding: 2rem; transition: all 0.3s ease;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                            <i class="fas fa-tools" style="font-size: 2.5rem; color: var(--accent);"></i>
+                            <h3 style="margin: 0; color: white;">Windows Debloat Toolbox</h3>
+                        </div>
+                        <p style="color: var(--text-muted); margin-bottom: 1rem;">Ferramenta centralizada para debloat do Windows 11. Remova bloatware, melhore privacidade e libere espaço em disco com segurança.</p>
+                        <div style="background: rgba(0, 0, 0, 0.3); border-radius: 8px; padding: 1rem; margin-bottom: 1rem;">
+                            <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0.5rem 0;"><strong>Scripts inclusos:</strong></p>
+                            <ul style="list-style: none; padding: 0; margin: 0.5rem 0;">
+                                <li style="color: var(--text-muted); font-size: 0.85rem;">✓ Chris Titus Tech Windows Utility</li>
+                                <li style="color: var(--text-muted); font-size: 0.85rem;">✓ Win11Debloat (Raphire)</li>
+                                <li style="color: var(--text-muted); font-size: 0.85rem;">✓ Winhance</li>
+                                <li style="color: var(--text-muted); font-size: 0.85rem;">✓ Tiny11 Builder</li>
+                                <li style="color: var(--text-muted); font-size: 0.85rem;">✓ Massgrave (Office)</li>
+                            </ul>
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <a href="https://github.com/PesT-Lan/ferramenta-desinfestacao" target="_blank" class="btn-download" style="flex: 1; text-align: center;">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <a href="https://boxtiweb.com.br/" target="_blank" class="btn-download" style="flex: 1; text-align: center;">
+                                <i class="fas fa-globe"></i> Acessar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="contact" style="margin-top: 4rem;">
+                    <div class="contact-content">
+                        <h2>Mais Ferramentas em Breve</h2>
+                        <p>Estamos desenvolvendo novas ferramentas para facilitar a manutenção e otimização de seus sistemas. Fique atento!</p>
+                        <a href="https://wa.me/5553981007777?text=Olá%20BOX%20T.I!%20Gostaria%20de%20saber%20mais%20sobre%20as%20ferramentas%20disponíveis." class="whatsapp-link">
+                            <i class="fab fa-whatsapp"></i> Saiba Mais
                         </a>
                     </div>
                 </section>
