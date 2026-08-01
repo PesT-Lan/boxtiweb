@@ -4,14 +4,14 @@ Site corporativo para BOX T.I - Expertise em Tecnologia
 
 ## 📋 Características
 
-- ✅ Design moderno e responsivo
-- ✅ Hero section com CTA para WhatsApp
-- ✅ Seção de serviços (Redes, Virtualização, Data Center, etc)
-- ✅ Seção de recursos/diferenciais
+- ✅ Suporte a Redes de computadores
+- ✅ Configuração de sistemas e roteadores 
+- ✅ Serviços (Redes, Virtualização, Data Center, etc)
+- ✅ Recursos de suporte com automação /devOps
 - ✅ Integração WhatsApp para agendamento
-- ✅ Animações suaves
-- ✅ Otimizado para mobile
-- ✅ SEO friendly
+- ✅ Suporte remoto
+- ✅ Atedimento personalizado
+- ✅ investimento em T.I garantido
 
 ## 🎨 Serviços Destacados
 
@@ -28,44 +28,6 @@ Site corporativo para BOX T.I - Expertise em Tecnologia
 - **Localização**: Pelotas - RS
 - **Modelo**: Atendimento com hora marcada
 
-## 🚀 Como Usar
-
-### Localmente
-```bash
-cd boxtiweb
-python3 -m http.server 8080
-# Acesse: http://localhost:8080
-```
-
-### Deploy
-1. Copie os arquivos para seu servidor web
-2. Configure o domínio
-3. Pronto! Site está online
-
-## 📁 Estrutura
-
-```
-boxtiweb/
-├── index.html          # Página principal
-├── logo-boxtiweb.png   # Logo da empresa
-└── README.md           # Este arquivo
-```
-
-## 🎯 Otimizações
-
-- CSS inline para carregamento rápido
-- Imagens otimizadas
-- Sem dependências externas (apenas Font Awesome CDN)
-- Mobile-first responsive design
-- Animações suaves com CSS
-
-## 🔧 Customização
-
-Edite o arquivo `index.html` para:
-- Alterar cores (variáveis CSS em `:root`)
-- Modificar textos e conteúdo
-- Ajustar links de WhatsApp
-- Adicionar novas seções
 
 ## 📱 Links WhatsApp
 
